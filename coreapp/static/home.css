@@ -3,9 +3,38 @@ img.slides{
   padding-right: 10%;
 }
 div.item{
-  background-color: #2E2E2E;
+  background-color: white;
 }
 
 h1{
   color: red;
+}
+
+img.brandpic{
+  max-width: 70px;
+}
+img.themes{
+  max-width: 200px;
+}
+
+li.each_list{
+  display: inline;
+}
+ul.themes_lists{
+  padding-left: 14%;
+  padding-right: 14%;
+}
+li.after{
+  margin-left: 3%;
+}
+
+div.theme_background{
+  background-color: #2E2E2E;
+  padding-bottom: 5%;
+}
+h2.header_theme{
+  color: red;
+  background-color: #2E2E2E;
+  margin: 0 0;
+  padding: 1% 1% 1% 1%;
 }
