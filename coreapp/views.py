@@ -7,7 +7,9 @@ import datetime
 def home():
     return render_template("home.html")
 
-
+@app.route('/themes/')
+def themes():
+    return render_template("themes.html")
 
 if __name__ == "__main__":
     app.debug = True
