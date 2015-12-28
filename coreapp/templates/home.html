@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div id="home_li"></div>
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -119,17 +120,17 @@
   <div class="carousel-inner" role="listbox">
     <div class="item active theme_background">
       <ul class="themes_lists">
-        <li class="each_list"><a href="/themes/theme1"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></a></li>
-        <li class="each_list after"><a href="/themes/theme2"><img class="themes" src="/static/images/themes/2.png" alt="theme2"></a></li>
-        <li class="each_list after"><a href="/themes/theme3"><img class="themes" src="/static/images/themes/3.png" alt="theme3"></a></li>
-        <li class="each_list after"><a href="/themes/theme4"><img class="themes" src="/static/images/themes/4.jpeg" alt="theme4"></a></li>
+        <li class="each_list after"><a href="/themes/1"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></a></li>
+        <li class="each_list after"><a href="/themes/2"><img class="themes" src="/static/images/themes/2.png" alt="theme2"></a></li>
+        <li class="each_list after"><a href="/themes/3"><img class="themes" src="/static/images/themes/3.png" alt="theme3"></a></li>
+        <li class="each_list after"><a href="/themes/4"><img class="themes" src="/static/images/themes/4.jpeg" alt="theme4"></a></li>
 
       </ul>
     </div>
 
     <div class="item theme_background">
       <ul class="themes_lists">
-        <li class="each_list"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></li>
+        <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme2"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme3"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme4"></li>
@@ -139,7 +140,7 @@
 
     <div class="item theme_background">
       <ul class="themes_lists">
-        <li class="each_list"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></li>
+        <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme1"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme2"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme3"></li>
         <li class="each_list after"><img class="themes" src="/static/images/themes/1.png" alt="theme4"></li>
@@ -175,10 +176,15 @@
   <div class="row featurette">
     <div class="col-md-7">
       <h2 class="featurette-heading">正祥一品店. <span class="text-muted">It'll blow your mind.</span></h2>
-      <p class="lead">（这里写文案）.</p>
+      <p class="lead">
+        <div>地址：</div>
+        <div>其他文案</div>
+      </p>
     </div>
     <div class="col-md-5">
-      <img class="featurette-image img-responsive center-block" src="/static/images/stores/zhengxiang.jpg" alt="Generic placeholder image">
+      <a href="/stores/1">
+        <img class="featurette-image img-responsive center-block" src="/static/images/stores/zhengxiang.jpg" alt="Generic placeholder image">
+      </a>
     </div>
   </div>
 
@@ -187,10 +193,16 @@
   <div class="row featurette">
     <div class="col-md-7 col-md-push-5">
       <h2 class="featurette-heading">湖东路店. <span class="text-muted">See for yourself.</span></h2>
-      <p class="lead">（这里写文案）.</p>
+      <p class="lead">
+        <div>地址：</div>
+        <div>其他文案</div>
+
+      </p>
     </div>
     <div class="col-md-5 col-md-pull-7">
-      <img class="featurette-image img-responsive center-block" src="/static/images/stores/hudong.JPG" alt="Generic placeholder image">
+      <a href="/stores/2">
+        <img class="featurette-image img-responsive center-block" src="/static/images/stores/hudong.JPG" alt="Generic placeholder image">
+      </a>
     </div>
   </div>
 
@@ -199,7 +211,10 @@
   <div class="row featurette">
     <div class="col-md-7">
       <h2 class="featurette-heading">可以再加店面. <span class="text-muted">Checkmate.</span></h2>
-      <p class="lead">（加文案）</p>
+      <p class="lead">
+        <div>地址：</div>
+        <div>其他文案</div>
+      </p>
     </div>
     <div class="col-md-5">
       <img class="featurette-image img-responsive center-block" src="/static/images/stores/hudong.JPG" alt="Generic placeholder image">

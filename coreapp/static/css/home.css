@@ -2,8 +2,8 @@ div.strech{
   min-height: 51px;
 }
 img.slides{
-  padding-left: 13%;
-  padding-right: 13%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 div.item{
   background-color: white;
@@ -28,7 +28,7 @@ li.each_list{
   display: inline;
 }
 ul.themes_lists{
-  padding-left: 12%;
+  padding-left:  10%;
   padding-right: 4%;
 }
 li.after{
