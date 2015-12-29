@@ -1,0 +1,22 @@
+div.time{
+  color: rgba(0, 0, 255, 0.46);
+}
+#formid{
+  width: 500px;
+  margin: 0 auto;
+}
+.form_element{
+  width: 500px;
+  margin: 0 auto;
+}
+textarea.extra{
+  height: 90px;
+}
+#messagewall{
+  border: 2px solid black;
+  margin: 20px 20px;
+}
+
+div.inner{
+  padding: 10px 10px 10px 10px;
+}
