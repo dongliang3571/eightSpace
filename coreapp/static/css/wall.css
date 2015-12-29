@@ -1,4 +1,4 @@
-div.time{
+p.time{
   color: rgba(0, 0, 255, 0.46);
 }
 #formid{
@@ -14,9 +14,26 @@ textarea.extra{
 }
 #messagewall{
   border: 2px solid black;
-  margin: 20px 20px;
+  margin: 4% 4%;
 }
 
-div.inner{
-  padding: 10px 10px 10px 10px;
+p.inner{
+
+}
+
+p.user{
+  padding: 2% 2% 0% 2%;
+}
+
+p.message{
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 100%;
+  word-wrap: break-word;
+}
+
+p.time{
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
 }

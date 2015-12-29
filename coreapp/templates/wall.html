@@ -8,8 +8,8 @@
 
 <div id="formid">
 <form action="/wall/" id="wallform" method="post">
-<input class="form_element" type="text" placeholder="你的名字" name="name"><br>
-<textarea class="form_element extra" name="comment" form="wallform" placeholder="请输入你想说的话...."></textarea>
+<input class="form_element" type="text" required="required" maxlength="15" size="20" placeholder="你的名字" name="name"><br>
+<textarea class="form_element extra" required="required" name="comment" form="wallform" placeholder="请输入你想说的话...."></textarea>
 <input class="form_element" type="submit" value="提交">
 </form>
 </div>
@@ -17,9 +17,9 @@
 <div id="messagewall">
 
 {% for message in messages %}
-<div class="user inner">用户: {{ message.name }}</div>
-<div class="message inner">留言: {{ message.content }}</div>
-<div class="time inner">时间: {{ message.date.strftime("%Y-%m-%d %H:%M:%S") }}</div>
+<p class="user inner">用户: {{ message.name }}</p>
+<p class="message inner">留言: {{ message.content }}</p>
+<p class="time inner">时间: {{ message.date.strftime("%Y-%m-%d %H:%M:%S") }}</p>
 <hr class="featurette-divider">
 {% endfor %}
 
