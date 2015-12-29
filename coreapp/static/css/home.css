@@ -1,4 +1,6 @@
-
+a.navfont{
+  font-size: 1.2em;
+}
 div.strech{
   min-height: 51px;
 }
