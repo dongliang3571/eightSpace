@@ -19,8 +19,8 @@ img.brandpic{
   max-width: 70px;
 }
 img.themes{
-  max-width: 200px;
-  max-height: 180px;
+  width: 20%;
+  height: 20%;
   border: 2px solid white;
 }
 img.themes:hover{
@@ -36,12 +36,15 @@ ul.themes_lists{
 }
 li.after{
   margin-left: 3%;
-  margin-top: 10%;
+}
+ul.themes_lists{
+  padding-top: 3%;
 }
 
 div.theme_background{
   background-color: #2E2E2E;
   padding-bottom: 5%;
+  min-height: 130px;
 }
 h2.header_theme{
   color: red;

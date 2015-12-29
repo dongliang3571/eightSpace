@@ -43,9 +43,3 @@ def wall():
         db.session.commit()
     messages = db.session.query(message).order_by(desc(message.date)).all()
     return render_template("wall.html", messages=messages)
-
-
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run()
