@@ -1,9 +1,10 @@
 # This Python file uses the following encoding: utf-8
 from coreapp import app
-from flask import request, render_template, redirect, url_for, session, flash
+from flask import request, render_template, redirect, url_for, session, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import desc
+import json
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
@@ -46,8 +47,15 @@ def wall():
         now = datetime.now()
         db.session.add(message(name, content, now))
         db.session.commit()
-    messages = db.session.query(message).order_by(desc(message.date)).all()
-    return render_template("wall.html", messages=messages)
+        messages = db.session.query(message).order_by(desc(message.date)).all()
+        flash(u"谢谢您的留言")
+        return render_template("wall.html", messagess=messages)
+    else:
+        messages = db.session.query(message).order_by(desc(message.date)).all()
+        flash(u"欢迎来留言")
+        return render_template("wall.html", messagess=messages)
+
+
 
 @app.route('/authentication/', methods=['GET', 'POST'])
 def authentication():
@@ -76,3 +84,20 @@ def logout():
     session.pop('logged_in', None)
     flash(u"你已成功登出")
     return redirect(url_for('home'))
+
+@app.route('/wall/delete/<number>', methods=['GET','DELETE'])
+def delete_message(number=None):
+    if request.method == "DELETE":
+        delete_message = message.query.get(int(number))
+        context = {
+            "name": delete_message.name,
+            "content": delete_message.content,
+            "date": delete_message.date.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        db.session.delete(delete_message)
+        db.session.commit()
+        return jsonify(**context)
+        # return redirect("/wall/")
+    else:
+        flash(u"删除发生错误")
+        return redirect("/wall/")

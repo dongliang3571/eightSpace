@@ -54,7 +54,7 @@ p.time{
   padding-right: 2%;
 }
 
-#delete{
+button.delete{
   position: relative;
-  left:90%;
+  left:85%;
 }

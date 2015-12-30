@@ -10,7 +10,7 @@
 <form action="/wall/" id="wallform" method="post">
 <input class="form_element nameinput" type="text" required="required" maxlength="15" size="20" placeholder="你的名字" name="name" form="wallform"><br>
 <textarea id="contentarea" class="form_element extra" required="required" name="comment" form="wallform" placeholder="请输入你想说的话...."></textarea>
-<input class="form_element btn btn-primary" type="submit" value="提交">
+<input class="form_element btn btn-primary" type="submit" value="提交" form="wallform">
 </form>
 </div>
 
@@ -18,12 +18,14 @@
 
 {% if session.logged_in %}
 
-{% for message in messages %}
+{% for message in messagess %}
+<div class="floor">
 <p class="user inner">用户: {{ message.name }}</p>
-<p class="message inner" data-id="{{ message.id }}">留言: {{ message.content }}</p>
+<p class="message inner">留言: {{ message.content }}</p>
 <p class="time inner">时间: {{ message.date.strftime("%Y-%m-%d %H:%M:%S") }}</p>
-<button id="delete">删除</button>
+<button class="delete" data-id="{{ message.id }}">删除</button>
 <hr class="featurette-divider">
+</div>
 {% endfor %}
 
 
