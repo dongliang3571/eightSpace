@@ -8,4 +8,5 @@ $(function(){
       $(tapstring).attr("class", "active");
     }
   }
+
 });

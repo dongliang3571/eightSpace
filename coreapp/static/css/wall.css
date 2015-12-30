@@ -53,3 +53,8 @@ p.time{
   padding-left: 2%;
   padding-right: 2%;
 }
+
+#delete{
+  position: relative;
+  left:90%;
+}

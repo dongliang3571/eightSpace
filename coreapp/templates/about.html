@@ -6,4 +6,15 @@
 
 <h1>关于我们</h1>
 
+
+{% if session.logged_in %}
+
+<p>area</p>
+
+{% else %}
+{{ he }}
+<p>else</p>
+
+{% endif %}
+
 {% endblock %}

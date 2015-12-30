@@ -59,24 +59,54 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form> -->
+      {% if session.logged_in %}
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="/logout/">
+            登出
+          </a>
+        </li>
+      </ul>
+
+
+      {% else %}
+
+      <form id="adminlogin" action="/authentication/" method="post">
       <ul class="nav navbar-nav navbar-right">
         <!-- <li><a href="#">留言版</a></li>
         <li><a href="#">关于我们</a></li> -->
-        <!-- <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员 <span class="caret"></span></a>
+          <ul class="dropdown-menu admin">
+            <li><a><label><input class="username admin" type="text" name="username" required="required" form="adminlogin">用户名</label></a></li>
+            <li><a><label><input class="password admin" type="password" name="password" required="required" adminlogin>密码</label></a></li>
+            <li><a><input class="submit btn btn-primary signin-btn" type="submit" value="登陆"></a></li>
           </ul>
-        </li> -->
+        </li>
       </ul>
+      </from>
+    {% endif %}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 <div class="strech"></div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    {% for message in messages %}
+      <div id="alertmessage" class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ message }}
+      </div>
+      <script>
+      window.setTimeout(function() {
+        $("#alertmessage").fadeOut(1000);
+      }, 2000);
+
+    </script>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
 
     {% block content %}
 

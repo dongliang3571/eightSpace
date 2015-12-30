@@ -1,6 +1,15 @@
 a.navfont{
   font-size: 1.2em;
 }
+
+#alertmessage{
+  margin-bottom: 0px;
+  text-align: center;
+  margin-bottom: 0px;
+  position: absolute;
+  width: 100%;
+  z-index: 11;
+}
 div.strech{
   min-height: 51px;
 }
