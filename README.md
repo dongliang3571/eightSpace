@@ -11,12 +11,11 @@ This is a flask-based website, which need s following functionality:
 
 
 To run the website, first create the sqlite3 database:
-"""
+```
 python db_create.py
-"""
+```
 then,
-"""
+```
 python main.py
-"""
+```
 to start the local server.
-
