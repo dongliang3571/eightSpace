@@ -2,6 +2,9 @@ a.navfont{
   font-size: 1.2em;
 }
 
+input.admin{
+  color: black;
+}
 #alertmessage{
   margin-bottom: 0px;
   text-align: center;

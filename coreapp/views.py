@@ -34,10 +34,14 @@ def stores(number):
     newfile_name = "/storepages/store" + number + ".html"
     return render_template(newfile_name)
 
-@app.route('/aboutus/')
+@app.route('/aboutus/', methods=['GET', 'POST'])
 def about():
-    he = "yes"
-    return render_template("about.html", he = he)
+    if request.method == "POST":
+        img = request.form['image']
+        print img
+        return render_template("about.html", he = img)
+    else:
+        return render_template("about.html")
 
 @app.route('/wall/', methods=['GET', 'POST'])
 def wall():
