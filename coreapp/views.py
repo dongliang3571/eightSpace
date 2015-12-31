@@ -45,7 +45,7 @@ def wall():
         name = request.form['name']
         content = request.form['comment']
         now = datetime.now()
-        now2 = now + timedelta(hours=6)
+        now2 = now + timedelta(hours=8)
         db.session.add(message(name, content, now2))
         db.session.commit()
         messages = db.session.query(message).order_by(desc(message.date)).all()
