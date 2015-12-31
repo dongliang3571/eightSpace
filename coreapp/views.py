@@ -5,10 +5,19 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from sqlalchemy import desc
 import json
+from werkzeug import secure_filename
+import os
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 db = SQLAlchemy(app)
+
+folder = "static/uploaded"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+UPLOAD_FOLDER = os.path.join(BASE_DIR, folder)
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 from models import message
 from models import admin
@@ -106,3 +115,33 @@ def delete_message(number=None):
     else:
         flash(u"删除发生错误")
         return redirect("/wall/")
+
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+
+@app.route('/upload/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file((file.filename).lower()):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+         <input type=submit value=Upload>
+    </form>
+    '''
+
+@app.route('/uploaded/', methods=['GET', 'POST'])
+def uploaded_file():
+    filename = request.args.get("filename","")
+    imgpath = "/static/uploaded/" + filename
+    return render_template("about.html", filename=filename, imgpath=imgpath)
