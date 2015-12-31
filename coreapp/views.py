@@ -2,7 +2,7 @@
 from coreapp import app
 from flask import request, render_template, redirect, url_for, session, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import datetime, timedelta
 from sqlalchemy import desc
 import json
 
@@ -45,7 +45,8 @@ def wall():
         name = request.form['name']
         content = request.form['comment']
         now = datetime.now()
-        db.session.add(message(name, content, now))
+        now2 = now + timedelta(hours=6)
+        db.session.add(message(name, content, now2))
         db.session.commit()
         messages = db.session.query(message).order_by(desc(message.date)).all()
         flash(u"谢谢您的留言")
