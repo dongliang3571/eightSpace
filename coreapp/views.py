@@ -70,14 +70,14 @@ def authentication():
         if db_username == attempted_username and db_password == attempted_password:
             session['logged_in'] = True
             flash(u"你已成功登陆")
-            return redirect("/wall/")
+            return redirect("/")
         else:
             flash(u"账号密码错误")
-            return redirect("/home/")
+            return redirect("/")
 
     else:
         flash(u"账号密码错误")
-        return redirect("/home/")
+        return redirect("/")
 
 @app.route('/logout/')
 def logout():
