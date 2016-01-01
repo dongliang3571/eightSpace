@@ -9,7 +9,7 @@ import os
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///home/vcap/fs/838c48b47588a13/production.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/vcap/fs/838c48b47588a13/production.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 from models import db
