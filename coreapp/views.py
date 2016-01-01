@@ -8,13 +8,13 @@ import json
 from werkzeug import secure_filename
 import os
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///home/vcap/fs/838c48b47588a13/test.db'
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 db = SQLAlchemy(app)
-
 from db_create import init_db
-
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///home/vcap/fs/838c48b47588a13/test.db'
 init_db()
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+
 
 folder = "static/uploaded"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
