@@ -1,6 +1,6 @@
-from views import db
+from flask_sqlalchemy import SQLAlchemy
 
-
+db = SQLAlchemy()
 
 class message(db.Model):
     __tablename__ = "usermessage"

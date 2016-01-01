@@ -1,20 +1,27 @@
 # This Python file uses the following encoding: utf-8
-from coreapp import app
-from flask import request, render_template, redirect, url_for, session, flash, jsonify
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, render_template, redirect, url_for, session, flash, jsonify
+# from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from sqlalchemy import desc
 import json
 from werkzeug import secure_filename
 import os
 
-db = SQLAlchemy(app)
-from db_create import init_db
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///home/vcap/fs/838c48b47588a13/test.db'
-init_db()
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+from models import db
 
+db.init_app(app)
+db.create_all(app=app)
+
+from models import message, admin
+from db_create import init_db
+
+with app.app_context():
+    init_db(db)
 
 folder = "static/uploaded"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -24,8 +31,7 @@ UPLOAD_FOLDER =  "/home/vcap/fs/838c48b47588a13"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-from models import message
-from models import admin
+
 
 
 @app.route('/')
@@ -151,3 +157,9 @@ def uploaded_file():
     filename = request.args.get("filename","")
     imgpath = "/home/vcap/fs/838c48b47588a13" + filename
     return render_template("about.html", filename=filename, imgpath=imgpath)
+
+
+
+app.debug = True
+if __name__ == '__main__':
+    app.run(host="0.0.0.0",port=5010)
