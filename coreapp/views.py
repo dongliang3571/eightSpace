@@ -145,5 +145,5 @@ def upload_file():
 @app.route('/uploaded/', methods=['GET', 'POST'])
 def uploaded_file():
     filename = request.args.get("filename","")
-    imgpath = " /home/vcap/fs/838c48b47588a13" + filename
+    imgpath = "/home/vcap/fs/838c48b47588a13" + filename
     return render_template("about.html", filename=filename, imgpath=imgpath)
