@@ -15,7 +15,8 @@ db = SQLAlchemy(app)
 folder = "static/uploaded"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-UPLOAD_FOLDER = os.path.join(BASE_DIR, folder)
+# UPLOAD_FOLDER = os.path.join(BASE_DIR, folder)
+UPLOAD_FOLDER =  "/home/vcap/fs/838c48b47588a13"
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -127,9 +128,10 @@ def upload_file():
         file = request.files['file']
         if file and allowed_file((file.filename).lower()):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.filename = "1.png"
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
             return redirect(url_for('uploaded_file',
-                                    filename=filename))
+                                    filename=file.filename))
     return '''
     <!doctype html>
     <title>Upload new File</title>
@@ -143,5 +145,5 @@ def upload_file():
 @app.route('/uploaded/', methods=['GET', 'POST'])
 def uploaded_file():
     filename = request.args.get("filename","")
-    imgpath = "/static/uploaded/" + filename
+    imgpath = " /home/vcap/fs/838c48b47588a13" + filename
     return render_template("about.html", filename=filename, imgpath=imgpath)
