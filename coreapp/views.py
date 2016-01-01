@@ -8,7 +8,7 @@ import json
 from werkzeug import secure_filename
 import os
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/vcap/fs/838c48b47588a13/test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///home/vcap/fs/838c48b47588a13/test.db'
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 db = SQLAlchemy(app)
 
