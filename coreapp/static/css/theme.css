@@ -1,0 +1,42 @@
+div.outter{
+  max-width: 98%;
+  border: 1px solid rgba(255, 0, 0, 0.0);;
+  margin: 0px auto;
+  background-color: white;
+}
+#add_theme{
+  width: 20%;
+  border: 2px dashed rgba(255, 0, 0, 0.3);
+}
+#add_div{
+  width: 100%;
+  margin:1% 40%;
+}
+
+ul.add_list{
+  list-style: none;
+}
+
+textarea.theme_description{
+  margin-left:10%;
+}
+
+li.theme_element{
+  margin-bottom: 1%;
+}
+
+input.second_button{
+  margin-left: 10px;
+}
+/*.blackcover{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 16;
+}*/
+
+/*#add_section{
+  z-index:16;
+}*/
