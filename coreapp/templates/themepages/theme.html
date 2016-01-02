@@ -4,80 +4,60 @@
 <br><br>
 <div id="theme_li"></div>
 
-<div class="row">
+{% if session.logged_in %}
+<div id="blackcover">
+  <div id="add_section">
+  <form id="theme_form" action="/themes/add_theme/" method="post">
+    <ul class="add_list">
+      <li class="theme_element"><input type="text" name="image_link" required="required" size="50">图片链接(如：https://www.image.com/some.jpg)</li>
+      <li class="theme_element"><input type="text" name="title" required="required">主题标题</li>
+      <li class="theme_element"><input type="radio" name="is_new" value="1">最新<input class="second_button" type="radio" name="is_new" value="0">不是最新</li>
+      <li class="theme_element"><input type="text" name="description" required="required" size="130">主题描述</li>
+      <li class="theme_element"><input type="text" name="short_intro" required="required" size="100">主题简介</li>
+      <li class="theme_element"><input type="text" name="time_limit">时间限制(如：2小时)</li>
+      <li class="theme_element"><input type="text" name="number_people" required="required">人数(如：4-5)</li>
+      <li class="theme_element"><input type="text" name="easiness" required="required">难度(填 1 2 3 4 5，只能填其中一个数字)</li>
+      <li class="theme_element"><input type="text" name="number_room" required="required">房间数(填一个数字，如：3)</li>
+      <li class="theme_element"><input type="submit" value="提交"></li>
+    </ul>
+  </form>
+  </div>
+</div>
 
+{% endif %}
+
+<div class="row outter">
+
+{% for theme in themes %}
   <div class="col-xs-6 col-md-4">
     <div class="panel panel-danger">
       <div class="panel-heading">
-        变形金钢
+        {{ theme.title }}
+        {% if theme.is_new %}
+        <span class="label label-default">New</span>
+        {% endif %}
+        {% if session.logged_in %}
+        <button class="theme_delete" data-id="{{ theme.id }}">删除</button>
+        {% endif %}
       </div>
       <div class="panel-body">
         <a href="#" class="thumbnail">
-          <img src="/static/images/themes/1.png" alt="">
+          <img src="{{ theme.image_link }}" alt="theme picture">
         </a>
-        <p>简介：一句文案</p>
+        <p>简介：{{ theme.short_intro }}</p>
+        <p>人数：{{ theme.number_people }}</p>
+        <p>难易度：
+          {% for n in range(theme.easiness) %}
+          ＊
+          {% endfor %}
+        </p>
+        <p>房间数：{{ theme.number_room }}</p>
+
       </div>
     </div>
   </div>
 
-  <div class="col-xs-6 col-md-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        鬼宅
-      </div>
-      <div class="panel-body">
-        <a href="#" class="thumbnail">
-          <img src="/static/images/brand.jpeg" alt="">
-        </a>
-        <p>简介：一句文案</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xs-6 col-md-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        变形金钢
-      </div>
-      <div class="panel-body">
-        <a href="#" class="thumbnail">
-          <img src="/static/images/icon.png" alt="">
-        </a>
-        <p>简介：一句文案</p>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="col-xs-6 col-md-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        变形金钢
-      </div>
-      <div class="panel-body">
-        <a href="#" class="thumbnail">
-          <img src="http://placehold.it/250x250" alt="haha">
-        </a>
-        <p>简介：一句文案</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xs-6 col-md-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        变形金钢
-      </div>
-      <div class="panel-body">
-        <a href="" class="thumbnail">
-          <img src="http://placehold.it/250x250" alt="haha">
-        </a>
-        <p>简介：一句文案</p>
-      </div>
-    </div>
-  </div>
-
-
+{% endfor %}
 </div>
 
 {% endblock %}
