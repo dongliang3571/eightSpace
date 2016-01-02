@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="theme_li"></div>
+
+<h1>
+  {{ theme.title }}
+  {% if theme.is_new %}
+    <span class="label label-default">New</span>
+  {% endif %}
+</h1>
+<img src="{{ theme.image_link }}">
+<p>简介：{{ theme.short_intro }}</p>
+<p>人数：{{ theme.number_people }}</p>
+<p>难易度：
+  {% for n in range(theme.easiness) %}
+  ＊
+  {% endfor %}
+</p>
+<p>房间数：{{ theme.number_room }}</p>
+
+{% endblock %}

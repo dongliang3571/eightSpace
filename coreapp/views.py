@@ -9,8 +9,8 @@ import jinja2
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/vcap/fs/838c48b47588a13/production.db'  #for production
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///production.db' # for local only
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/vcap/fs/838c48b47588a13/production.db'  #for production
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///production.db' # for local only
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 from models import db
@@ -48,15 +48,17 @@ def page_not_found(e):
 def themes(number=None):
     session["previous_path"] = request.path
     if number:
-        newfile_name = "/themepages/theme" + number + ".html"
+        newfile_name = "/themepages/theme_template.html"
+        themes_db = theme.query.get(int(number))
+        return render_template(newfile_name, theme = themes_db)
     else:
         newfile_name = "/themepages/theme.html"
 
-    themes_db = theme.query.order_by(desc(theme.date)).all()
-    try:
-        return render_template(newfile_name, themes = themes_db)
-    except jinja2.exceptions.TemplateNotFound:
-        return redirect("themes/")
+        themes_db = theme.query.order_by(desc(theme.date)).all()
+        try:
+            return render_template(newfile_name, themes = themes_db)
+        except jinja2.exceptions.TemplateNotFound:
+            return redirect("themes/")
 
 @app.route('/themes/add_theme/', methods=['GET', 'POST'])
 def add_theme():
